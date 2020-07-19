@@ -1,4 +1,5 @@
 # Run Pred01.R until df_sales3$shopitem_id = paste(as.ch... line 45 to create the data you need
+library(ggplot2)
 
 df_shops = aggregate(data.frame(df_sales3$item_cnt_month), by=data.frame(df_sales3$shop_id, df_sales3$month), sum, na.rm=TRUE)
 colnames(df_shops) = c("shop_id", "month", "item_cnt_month")
