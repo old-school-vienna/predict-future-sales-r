@@ -9,8 +9,8 @@ Pathcsv = "/data/kaggle/pfs/" # ww
 csvfile = paste(Pathcsv, "sales_train.csv", sep="")
 df_sales = read.csv2(csvfile, sep=",", header=TRUE, dec=".", stringsAsFactors=TRUE)
 
-csvfile = paste(Pathcsv, "items.csv", sep="")
-df_items = read.csv2(csvfile, sep=",", header=TRUE, dec=".", stringsAsFactors=TRUE)
+#csvfile = paste(Pathcsv, "items.csv", sep="")
+#df_items = read.csv2(csvfile, sep=",", header=TRUE, dec=".", stringsAsFactors=TRUE)
 
 #csvfile = paste(Pathcsv, "item_categories.csv", sep="")
 #df_itemcats = read.csv2(csvfile, sep=",", header=TRUE, dec=".", stringsAsFactors=TRUE)
@@ -40,14 +40,11 @@ length(unique(df_sales2$shop_id))
 length(unique(df_test$shop_id))
 
 ############## Aggragate ############
-df_sales3 = aggregate(data.frame(df_sales2$item_cnt_day), by=data.frame(df_sales2$date_block_num, df_sales2$shop_id, df_sales2$item_id), sum, na.rm=TRUE)
-colnames(df_sales3) = c("date_block_num", "shop_id", "item_id", "item_cnt_month")
+df_sales3 = aggregate(data.frame(df_sales2$item_cnt_day), by=data.frame(df_sales2$month, df_sales2$shop_id, df_sales2$item_id), sum, na.rm=TRUE)
+colnames(df_sales3) = c("month", "shop_id", "item_id", "item_cnt_month")
 df_sales3$shopitem_id = paste(as.character(df_sales3$shop_id), as.character(df_sales3$item_id), sep="-")
 
-train_shopitems = unique(df_sales3$shopitem_id)
-miss = train_shopitems - test_shopitems
-
-inter = intersect(test_shopitems, train_shopitems)
+df_sales4 = subset(df_sales3, subset=(shopitem_id %in% test_shopitems))
 
 # df_pred1 = aggregate(data.frame(df_sales3$item_cnt_month), by=data.frame(df_sales3$shop_id, df_sales3$item_id), mean, na.rm=TRUE)
 df_pred1 = aggregate(data.frame(df_sales4$item_cnt_month), by=data.frame(df_sales4$shop_id, df_sales4$item_id), mean, na.rm=TRUE)
