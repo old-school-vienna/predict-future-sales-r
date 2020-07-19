@@ -9,8 +9,8 @@ Pathcsv = "/data/kaggle/pfs/" # ww
 csvfile = paste(Pathcsv, "sales_train.csv", sep="")
 df_sales = read.csv2(csvfile, sep=",", header=TRUE, dec=".", stringsAsFactors=TRUE)
 
-#csvfile = paste(Pathcsv, "items.csv", sep="")
-#df_items = read.csv2(csvfile, sep=",", header=TRUE, dec=".", stringsAsFactors=TRUE)
+csvfile = paste(Pathcsv, "items.csv", sep="")
+df_items = read.csv2(csvfile, sep=",", header=TRUE, dec=".", stringsAsFactors=TRUE)
 
 #csvfile = paste(Pathcsv, "item_categories.csv", sep="")
 #df_itemcats = read.csv2(csvfile, sep=",", header=TRUE, dec=".", stringsAsFactors=TRUE)
