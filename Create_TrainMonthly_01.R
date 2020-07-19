@@ -2,7 +2,9 @@ library(reshape2)
 
 set.seed(12345)
 
-Pathcsv = "C://Users//karlb//Documents//SASUniversityEdition//myfolders//Predict Future Sales//"
+# Pathcsv = "/data/kaggle/pfs/" # ww ben
+Pathcsv = "/Users/wwagner4/work/kaggle/pfs/" # ww mac
+# Pathcsv = "C://Users//karlb//Documents//SASUniversityEdition//myfolders//Predict Future Sales//"
 # Pathcsv = "C://Users//Win10//Documents//SASUniversityEdition//myfolders//Predict Future Sales//" # Intel NUK
 
 csvfile = paste(Pathcsv, "sales_train.csv", sep="")
